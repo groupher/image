@@ -192,11 +192,13 @@ export default class ImageTool {
     /* OSS sdk is import in _document from ali cdn */
     try {
       /* this.state.ossClient = new OSS.Wrapper({ */
+      const { ossKeys } = this.data 
+
       const ossClient = new OSS.Wrapper({
-        region: process.env.ALI_OSS_RESION,
-        accessKeyId: process.env.ALI_ACCESS_KEY,
-        accessKeySecret: process.env.ALI_ACCESS_SECRET,
-        bucket: process.env.ALI_OSS_BUCKET,
+        region: ossKeys.ALI_OSS_RESION,
+        accessKeyId: ossKeys.ALI_ACCESS_KEY,
+        accessKeySecret: ossKeys.ALI_ACCESS_SECRET,
+        bucket:  ossKeys.ALI_OSS_BUCKET,
         /* internal: true, */
         /* secure: true, */
       })
