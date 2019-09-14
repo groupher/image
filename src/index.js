@@ -99,6 +99,7 @@ export default class ImageTool {
     /**
      * Tool's initial config
      */
+    console.log('constructor config: ', config);
     this.config = {
       endpoints: config.endpoints || '',
       additionalRequestData: config.additionalRequestData || {},
@@ -194,6 +195,8 @@ export default class ImageTool {
     try {
       /* this.state.ossClient = new OSS.Wrapper({ */
       const { ossKeys } = this.config
+      console.log('initOssClient config: ', this.config)
+      console.log('initOssClient ossKeys: ', ossKeys)
 
       const ossClient = new OSS.Wrapper({
         region: ossKeys.ALI_OSS_RESION,
