@@ -93,7 +93,11 @@ export default class ImageTool {
    * @param {ImageConfig} config - user config for Tool
    * @param {object} api - Editor.js API
    */
-  constructor({ data, config, api }) {
+  constructor(props) {
+    const { data, config, api } = props;
+
+    console.log('constructor  props: ', props);
+
     this.api = api;
 
     /**
