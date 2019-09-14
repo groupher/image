@@ -149,26 +149,27 @@ export default class ImageTool {
     this.data = data;
 
     // load script
-    this.loadScriptAndInitOSS()
-    this.ossScriptAnchor = null
+    this.loadScriptAndInitOSS();
+    this.ossScriptAnchor = null;
   }
 
   loadScriptAndInitOSS() {
-    this.ossScriptAnchor = document.createElement('script')
+    this.ossScriptAnchor = document.createElement('script');
     this.ossScriptAnchor.src =
-      'https://gosspublic.alicdn.com/aliyun-oss-sdk-5.2.0.min.js'
+      'https://gosspublic.alicdn.com/aliyun-oss-sdk-5.2.0.min.js';
 
-    this.ossScriptAnchor.async = true
-    document.getElementsByTagName('head')[0].appendChild(this.ossScriptAnchor)
+    this.ossScriptAnchor.async = true;
+    document.getElementsByTagName('head')[0].appendChild(this.ossScriptAnchor);
 
     this.ossScriptAnchor.addEventListener('load', () => {
-      console.log('load oss script done')
+      console.log('load oss script done');
       // this.initOssClient()
       // this.setState({ ossScriptLoaded: true, ossScriptAnchor })
-    })
-    ossScriptAnchor.addEventListener('error', () => {
-      console.log('load oss script error')
-    })
+    });
+
+    this.ossScriptAnchor.addEventListener('error', () => {
+      console.log('load oss script error');
+    });
   }
 
   /**

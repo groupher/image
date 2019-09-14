@@ -10,10 +10,10 @@ module.exports = {
           {
             loader: 'babel-loader',
             query: {
-              presets: [ '@babel/preset-env' ],
-            },
-          },
-          'eslint-loader'
+              presets: [ '@babel/preset-env' ]
+            }
+          }
+          // 'eslint-loader'
         ]
       },
       {
