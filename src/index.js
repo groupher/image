@@ -107,7 +107,8 @@ export default class ImageTool {
       types: config.types || 'image/*',
       captionPlaceholder: config.captionPlaceholder || 'Caption',
       buttonContent: config.buttonContent || '',
-      uploader: config.uploader || undefined
+      uploader: config.uploader || undefined,
+      ossKeys: config.ossKeys || {}
     };
 
     /**
@@ -192,7 +193,7 @@ export default class ImageTool {
     /* OSS sdk is import in _document from ali cdn */
     try {
       /* this.state.ossClient = new OSS.Wrapper({ */
-      const { ossKeys } = this.data 
+      const { ossKeys } = this.config
 
       const ossClient = new OSS.Wrapper({
         region: ossKeys.ALI_OSS_RESION,
