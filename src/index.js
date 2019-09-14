@@ -153,6 +153,12 @@ export default class ImageTool {
     this.ossScriptAnchor = null;
   }
 
+  /**
+   * load
+   * @private
+   *
+   * @return {void}
+   */
   loadScriptAndInitOSS() {
     this.ossScriptAnchor = document.createElement('script');
     this.ossScriptAnchor.src =
@@ -163,13 +169,48 @@ export default class ImageTool {
 
     this.ossScriptAnchor.addEventListener('load', () => {
       console.log('load oss script done');
-      // this.initOssClient()
-      // this.setState({ ossScriptLoaded: true, ossScriptAnchor })
+      this.initOssClient();
     });
 
     this.ossScriptAnchor.addEventListener('error', () => {
       console.log('load oss script error');
+      this.api.notifier.show({
+        message: 'Can not oss script',
+        style: 'error'
+      });
     });
+  }
+
+  /**
+   * load
+   * @private
+   *
+   * @return {void}
+   */
+  initOssClient() {
+    /* eslint-disable */
+    /* OSS sdk is import in _document from ali cdn */
+    try {
+      /* this.state.ossClient = new OSS.Wrapper({ */
+      const ossClient = new OSS.Wrapper({
+        region: process.env.ALI_OSS_RESION,
+        accessKeyId: process.env.ALI_ACCESS_KEY,
+        accessKeySecret: process.env.ALI_ACCESS_SECRET,
+        bucket: process.env.ALI_OSS_BUCKET,
+        /* internal: true, */
+        /* secure: true, */
+      })
+
+      console.log("ossClient: ", ossClient)
+      // this.setState({ ossClient })
+    } catch (e) {
+      console.error(e)
+      this.api.notifier.show({
+        message: 'init ossClient failed',
+        style: 'error'
+      });
+    }
+    /* eslint-enable */
   }
 
   /**
