@@ -154,9 +154,11 @@ export default class ImageTool {
     this._data = {};
     this.data = data;
 
-    // load script
-    this.loadScriptAndInitOSS();
-    this.ossScriptAnchor = null;
+    /*
+     * load script
+     * this.loadScriptAndInitOSS();
+     * this.ossScriptAnchor = null;
+     */
   }
 
   /**
